@@ -25,4 +25,3 @@ export function convertTime<
 >(_hhmmAMorPM: FTime<H, M, AMPM>) {
     return [0, 0, 'am'];
 }
-
