@@ -36,6 +36,9 @@
             ],
             "@db/*": [
                 "./db/*"
+            ],
+            "@utils/*": [
+                "./utils/*"
             ]
         },
         "incremental": true

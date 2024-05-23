@@ -23,16 +23,16 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
+        setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setLoading(true);
             if (currentUser) {
                 setUser(currentUser);
             } else {
                 setUser(null);
             }
 
-            setLoading(false);
         });
+        setLoading(false);
 
         return () => unsubscribe();
     }, []);
