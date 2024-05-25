@@ -5,10 +5,13 @@ import { useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 
 type IProtectedRoute = {
-    className?: string
-} & React.PropsWithChildren
+    className?: string;
+} & React.PropsWithChildren;
 
-export const ProtectedRoute: React.FC<IProtectedRoute> = ({ children, className = "" }) => {
+export const ProtectedRoute: React.FC<IProtectedRoute> = ({
+    children,
+    className = '',
+}) => {
     const router = useRouter();
     const auth = useAuth();
 
@@ -20,7 +23,13 @@ export const ProtectedRoute: React.FC<IProtectedRoute> = ({ children, className 
 
     if (!auth.user) return null;
 
-    return auth.user && <PageRoot isProtected className={twMerge(className)}>{children}</PageRoot>;
+    return (
+        auth.user && (
+            <PageRoot isProtected className={twMerge(className)}>
+                {children}
+            </PageRoot>
+        )
+    );
 };
 
-ProtectedRoute.displayName = "protectedroute"
+ProtectedRoute.displayName = 'protectedroute';

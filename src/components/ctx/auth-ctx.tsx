@@ -7,7 +7,7 @@ import {
     signOut,
 } from 'firebase/auth';
 import type { AuthProviderOption, IAuthContext } from '@T/data';
-import { auth } from '@db/auth';
+import { auth } from '@database/auth';
 
 const AuthContext = createContext<IAuthContext>({
     user: null,

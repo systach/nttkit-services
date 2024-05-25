@@ -3,10 +3,14 @@ import { twMerge } from 'tailwind-merge';
 
 type IPageRoot = {
     isProtected?: boolean;
-    className?: string
+    className?: string;
 } & React.PropsWithChildren;
 
-export const PageRoot: React.FC<IPageRoot> = ({ children, className = "", isProtected = false }) => {
+export const PageRoot: React.FC<IPageRoot> = ({
+    children,
+    className = '',
+    isProtected = false,
+}) => {
     const router = useRouter();
 
     return (

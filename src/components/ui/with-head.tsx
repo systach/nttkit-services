@@ -7,7 +7,6 @@ type IWithHead = {
 } & React.PropsWithChildren;
 
 export const WithHead: PageWithLayout<IWithHead> = ({ children, ...meta }) => {
-
     return (
         <>
             <Head>
@@ -19,4 +18,4 @@ export const WithHead: PageWithLayout<IWithHead> = ({ children, ...meta }) => {
     );
 };
 
-WithHead.displayName = "withhead"
+WithHead.displayName = 'withhead';

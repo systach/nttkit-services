@@ -34,8 +34,8 @@
             "@public/*": [
                 "./public/*"
             ],
-            "@db/*": [
-                "./db/*"
+            "@database/*": [
+                "./database/*"
             ],
             "@utils/*": [
                 "./utils/*"
