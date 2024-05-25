@@ -6,12 +6,12 @@ import { getFirebasePrivateKey } from './utils';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: getFirebasePrivateKey("API", "KEY"),
-    authDomain: getFirebasePrivateKey("AUTH", "DOMAIN"),
-    projectId: getFirebasePrivateKey("PROJECT", "ID"),
-    storageBucket: getFirebasePrivateKey("STORAGE", "BUCKET"),
-    messagingSenderId: getFirebasePrivateKey("MESSAGING", "SENDER", "ID"),
-    appId: getFirebasePrivateKey("APP", "ID")
+    apiKey: getFirebasePrivateKey('API', 'KEY'),
+    authDomain: getFirebasePrivateKey('AUTH', 'DOMAIN'),
+    projectId: getFirebasePrivateKey('PROJECT', 'ID'),
+    storageBucket: getFirebasePrivateKey('STORAGE', 'BUCKET'),
+    messagingSenderId: getFirebasePrivateKey('MESSAGING', 'SENDER', 'ID'),
+    appId: getFirebasePrivateKey('APP', 'ID'),
 };
 
 // Initialize Firebase
