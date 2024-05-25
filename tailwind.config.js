@@ -4,9 +4,10 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'tree': '#2B7A0B',
-                'grass': '#5BB318',
-                'highlight': '#7DCE13'
+                // CUSTOM COLORS HERE
+            },
+            fontFamily: {
+                // CUSTOM FONTS HERE
             }
         },
     },

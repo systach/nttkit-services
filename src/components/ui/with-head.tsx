@@ -1,17 +1,12 @@
 import type { PageWithLayout } from '@T/pages';
-import { useRouter } from 'next/router';
 import Head from 'next/head';
 
-type Metadata = {
+type IWithHead = {
     title: string;
     description: string;
-};
+} & React.PropsWithChildren;
 
-const WithHead: PageWithLayout<React.PropsWithChildren & Metadata> = ({
-    children,
-    ...meta
-}) => {
-    const router = useRouter();
+export const WithHead: PageWithLayout<IWithHead> = ({ children, ...meta }) => {
 
     return (
         <>
@@ -24,6 +19,4 @@ const WithHead: PageWithLayout<React.PropsWithChildren & Metadata> = ({
     );
 };
 
-WithHead.getLayout = (page) => page;
-
-export default WithHead;
+WithHead.displayName = "withhead"

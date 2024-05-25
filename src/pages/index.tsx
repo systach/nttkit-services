@@ -1,7 +1,7 @@
 import type { GetServerSidePropsContext } from 'next';
 import type { PageWithLayout } from '@T/pages';
 import { useAuth } from '@components/ctx';
-import { WithHead } from '@components/meta';
+import { WithHead } from '@components/ui/with-head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { SIGNIN_ROUTE } from '@utils/const';
@@ -13,26 +13,28 @@ export const getServerSideProps = async (_ctx: GetServerSidePropsContext) => {
 };
 
 const Home: PageWithLayout<Props> = () => {
-
     const auth = useAuth();
     const router = useRouter();
 
+    // THIS PAGE WILL REDIRECT IF
+    // 1) to main user panel if auth user DO exist
+    // 2) to sign in page if auth user DOES NOT exist
     useEffect(() => {
         if (auth.user) {
-            router.push("/dashboard")
+            router.push('/dashboard');
         }
         if (!auth.user) {
-            router.push(SIGNIN_ROUTE)
+            router.push(SIGNIN_ROUTE);
         }
-    }, [])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     return (
         <WithHead
             title="Potluck Party | Create & Share Potluck Party!"
             description="Potluck Party platform provides various features to create, plan, and share potluck party event with loved ones."
-        >
-        </WithHead>
-    )
+        />
+    );
 };
 
 Home.getLayout = (page) => page;

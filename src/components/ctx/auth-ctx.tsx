@@ -1,12 +1,12 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import {
+    AuthProvider,
     GoogleAuthProvider,
     onAuthStateChanged,
     signInWithPopup,
     signOut,
-    type User,
 } from 'firebase/auth';
-import type { IAuthContext } from '@T/data';
+import type { AuthProviderOption, IAuthContext } from '@T/data';
 import { auth } from '@db/auth';
 
 const AuthContext = createContext<IAuthContext>({
@@ -23,21 +23,24 @@ const AuthContextProvider: React.FC<React.PropsWithChildren> = ({
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        setLoading(true);
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setLoading(true);
             if (currentUser) {
                 setUser(currentUser);
             } else {
                 setUser(null);
             }
-
+            setLoading(false);
         });
-        setLoading(false);
 
         return () => unsubscribe();
     }, []);
 
-    const signInApp = () => signInWithPopup(auth, new GoogleAuthProvider());
+    const authProviders: Record<AuthProviderOption, AuthProvider> = {
+        google: new GoogleAuthProvider(),
+    };
+    const signInApp = (provider: AuthProviderOption) =>
+        signInWithPopup(auth, authProviders[provider]);
     const signOutApp = async () => await signOut(auth);
 
     return (
