@@ -29,12 +29,7 @@ const Home: PageWithLayout<Props> = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return (
-        <WithHead
-            title={APP_NAMES['en']}
-            description={""}
-        />
-    );
+    return <WithHead title={APP_NAMES['en']} description={''} />;
 };
 
 Home.getLayout = (page) => page;

@@ -7,12 +7,7 @@ dotenv.config()
 const BASE_KEY = 'NEXT_PUBLIC_FIREBASE_';
 function getFirebasePrivateKey(...keys) {
     const path = [BASE_KEY, keys.join('_')].join('');
-
-    console.log(path)
-
     const key = process.env[path];
-
-
     if (!key) {
         throw new Error(
             '<getFirebasePrivateKey> cannot have empty string as its value.'
