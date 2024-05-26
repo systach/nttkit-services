@@ -4,13 +4,12 @@ const dotenv = require("dotenv")
 
 dotenv.config()
 
-const BASE_KEY = 'NEXT_PUBLIC_FIREBASE_';
-function getFirebasePrivateKey(...keys) {
-    const path = [BASE_KEY, keys.join('_')].join('');
+function getKey(...keys) {
+    const path = keys.map(eachKey => eachKey.toUpperCase()).join('_')
     const key = process.env[path];
     if (!key) {
         throw new Error(
-            '<getFirebasePrivateKey> cannot have empty string as its value.'
+            '<next.config.js.getKey> cannot have empty string as its value.'
         );
     }
 
@@ -47,12 +46,14 @@ const nextConfig = {
     },
 
     env: {
-        apiKey: getFirebasePrivateKey('API', 'KEY'),
-        authDomain: getFirebasePrivateKey('AUTH', 'DOMAIN'),
-        projectId: getFirebasePrivateKey('PROJECT', 'ID'),
-        storageBucket: getFirebasePrivateKey('STORAGE', 'BUCKET'),
-        messagingSenderId: getFirebasePrivateKey('MESSAGING', 'SENDER', 'ID'),
-        appId: getFirebasePrivateKey('APP', 'ID'),
+        /** Firebase api keys */
+        apiKey: getKey('next', 'public', 'firebase', 'api', 'key'),
+        authDomain: getKey('next', 'public', 'firebase', 'auth', 'domain'),
+        projectId: getKey('next', 'public', 'firebase', 'project', 'id'),
+        storageBucket: getKey('next', 'public', 'firebase', 'storage', 'bucket'),
+        messagingSenderId: getKey('next', 'public', 'firebase', 'messaging', 'sender', 'id'),
+        appId: getKey('next', 'public', 'firebase', 'app', 'id'),
+        /** Other api keys */
     }
 }
 
