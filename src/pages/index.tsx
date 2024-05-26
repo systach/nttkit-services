@@ -4,7 +4,7 @@ import { useAuth } from '@components/ctx';
 import { WithHead } from '@components/ui/with-head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { SIGNIN_ROUTE } from '@utils/const';
+import { APP_NAMES, SIGNIN_ROUTE } from '@utils/const';
 
 type Props = {};
 
@@ -31,8 +31,8 @@ const Home: PageWithLayout<Props> = () => {
 
     return (
         <WithHead
-            title="Potluck Party | Create & Share Potluck Party!"
-            description="Potluck Party platform provides various features to create, plan, and share potluck party event with loved ones."
+            title={APP_NAMES['en']}
+            description={""}
         />
     );
 };

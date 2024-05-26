@@ -1,4 +1,28 @@
 /** @type {import('next').NextConfig} */
+
+const dotenv = require("dotenv")
+
+dotenv.config()
+
+const BASE_KEY = 'NEXT_PUBLIC_FIREBASE_';
+function getFirebasePrivateKey(...keys) {
+    const path = [BASE_KEY, keys.join('_')].join('');
+
+    console.log(path)
+
+    const key = process.env[path];
+
+
+    if (!key) {
+        throw new Error(
+            '<getFirebasePrivateKey> cannot have empty string as its value.'
+        );
+    }
+
+    return key;
+}
+
+
 const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
@@ -26,6 +50,15 @@ const nextConfig = {
             },
         ]
     },
+
+    env: {
+        apiKey: getFirebasePrivateKey('API', 'KEY'),
+        authDomain: getFirebasePrivateKey('AUTH', 'DOMAIN'),
+        projectId: getFirebasePrivateKey('PROJECT', 'ID'),
+        storageBucket: getFirebasePrivateKey('STORAGE', 'BUCKET'),
+        messagingSenderId: getFirebasePrivateKey('MESSAGING', 'SENDER', 'ID'),
+        appId: getFirebasePrivateKey('APP', 'ID'),
+    }
 }
 
 module.exports = nextConfig

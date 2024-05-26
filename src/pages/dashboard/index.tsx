@@ -13,7 +13,7 @@ const Dashboard: PageWithLayout = () => {
                 title={
                     auth.user
                         ? `Dashboard @ ${auth.user.displayName}`
-                        : `Dashboard @ Potluck Party`
+                        : `Dashboard @ ${APP_NAMES['en']}`
                 }
                 description=""
             >
